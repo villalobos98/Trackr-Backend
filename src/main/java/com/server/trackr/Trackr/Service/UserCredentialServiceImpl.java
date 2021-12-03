@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String logoutUser(User user) {
-        String email = user.getEmail();
-        User existingUser = repo.findUserByEmail(email);
+        Integer userID = user.getUserID();
+        User existingUser = repo.findById(userID).get();
         existingUser.setStatus(false);
         repo.save(user);
         return "USER LOGGED OUT";
@@ -29,6 +29,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findUserByEmail(String email) {
         User user = repo.findUserByEmail(email);
+        return user;
+    }
+
+    @Override
+    public User findUserByID(Integer userID) {
+        User user = repo.findById(userID).get();
         return user;
     }
 
