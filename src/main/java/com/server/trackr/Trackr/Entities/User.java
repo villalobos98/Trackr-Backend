@@ -19,7 +19,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "PROFILE_ID")
     private Integer userID;
 
     @Column(name="FIRST_NAME")
@@ -28,11 +28,6 @@ public class User {
     @Column(name="LAST_NAME")
     private String lastName;
 
-    @Column(name="EMAIL")
-    private String email;
-
-    @Column(name="PASS_WORD")
-    private String password;
 
     @Column(name="GENDER")
     private String gender;

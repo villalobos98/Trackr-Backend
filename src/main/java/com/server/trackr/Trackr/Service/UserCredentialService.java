@@ -1,14 +1,12 @@
 package com.server.trackr.Trackr.Service;
 
+import com.server.trackr.Trackr.Entities.Credential;
 import com.server.trackr.Trackr.Entities.User;
 
-public interface UserService {
-    String saveUser(User user);
+public interface UserCredentialService {
 
     String logoutUser(User user);
 
-    User findUserByEmail(String email);
-
-    User findUserByID(Integer userID);
+    String loginUser(Credential credential);
 
 }

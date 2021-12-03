@@ -1,12 +1,61 @@
 package com.server.trackr.Trackr.Controllers;
 
+import com.server.trackr.Trackr.Entities.Admin;
+import com.server.trackr.Trackr.Entities.User;
+import com.server.trackr.Trackr.Service.AdminControlService;
+import com.server.trackr.Trackr.Service.UserCredentialService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/admin")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdminController {
+    @Autowired
+    AdminControlService service;
 
-    //FIND AND REMOVE A USER
+    Boolean isAdminAuthenticated = Boolean.FALSE;
 
-    //FIND ONE USER
+    //FIND ONE USER BY ID
+    @GetMapping("/find/{user_id}")
+    public ResponseEntity<Object> findUser(@RequestBody Integer userID) {
+        if(!isAdminAuthenticated){
+            return new ResponseEntity<>("ERROR, NOT AUTHENTICATED, USE /AUTHENTICATE ROUTE", HttpStatus.UNAUTHORIZED);
+        }
 
+        User user = service.findUserByID(userID);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    //FIND ONE USER BY EMAIL
+    @GetMapping("/find/user")
+    public ResponseEntity<Object> findEmail(@RequestBody String email) {
+        if(!isAdminAuthenticated){
+            return new ResponseEntity<>("ERROR, NOT AUTHENTICATED, USE /AUTHENTICATE ROUTE", HttpStatus.UNAUTHORIZED);
+        }
+
+        User user = service.findUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
     //REMOVE ALL USERS
+    @GetMapping("/find/all")
+    public ResponseEntity<Object> findAllUsers(@PathVariable String email) {
+        if(!isAdminAuthenticated){
+            return new ResponseEntity<>("ERROR, NOT AUTHENTICATED, USE /AUTHENTICATE ROUTE", HttpStatus.UNAUTHORIZED);
+        }
 
-    //SIGN IN AS ADMIN
+        User user = service.findUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    //AUTHENTICATE AS ADMIN
+    @PostMapping("/authenticate")
+    public ResponseEntity<Object> findAllUsers(@RequestBody Admin admin) {
+        if (admin.getAdminUserName() == "admin" && admin.getAdminPassWord().equals("PASSWORD")){
+            this.isAdminAuthenticated = Boolean.TRUE;
+            return new ResponseEntity<>("AUTHENTICATED, WELCOME ADMIN", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("ERROR, NOT AUTHENTICATED", HttpStatus.OK);
+    }
 }

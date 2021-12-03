@@ -1,7 +1,6 @@
 package com.server.trackr.Trackr.Controllers;
 
 import com.server.trackr.Trackr.Entities.Expense;
-import com.server.trackr.Trackr.Entities.User;
 import com.server.trackr.Trackr.Service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

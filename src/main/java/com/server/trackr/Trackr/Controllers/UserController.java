@@ -1,7 +1,8 @@
 package com.server.trackr.Trackr.Controllers;
 
+import com.server.trackr.Trackr.Entities.Credential;
 import com.server.trackr.Trackr.Entities.User;
-import com.server.trackr.Trackr.Service.UserService;
+import com.server.trackr.Trackr.Service.UserCredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,23 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     @Autowired
-    UserService service;
+    UserCredentialService service;
 
     @GetMapping("/up")
     public ResponseEntity<String> heartBeat(){
         return new ResponseEntity<>("API is UP", HttpStatus.OK);
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-        service.saveUser(user);
-        return new ResponseEntity<>("User saved", HttpStatus.OK);
-    }
-
-    @GetMapping("/find/{email}")
-    public ResponseEntity<User> findUser(@PathVariable String email) {
-        User user = service.findUserByEmail(email);
-        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/logout")
@@ -37,4 +26,17 @@ public class UserController {
         return new ResponseEntity<>("User saved", HttpStatus.OK);
     }
 
-}
+    @GetMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+    //        service.findUserAndPassword(user);
+        return new ResponseEntity<>("User saved", HttpStatus.OK);
+    }
+
+    @PostMapping("/forgotPassword")
+    public ResponseEntity<String> forgotPassword(@RequestBody Credential credential) {
+
+        return new ResponseEntity<>("Password Reset Email sent", HttpStatus.OK);
+    }
+
+
+    }
