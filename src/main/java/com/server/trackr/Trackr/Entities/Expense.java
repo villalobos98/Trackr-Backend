@@ -17,7 +17,6 @@ import javax.persistence.*;
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer expenseID;
 
@@ -25,8 +24,15 @@ public class Expense {
     private String title;
 
     @Column(name = "EXPENSE_AMOUNT")
-    private Integer amount;
+    private Double amount;
 
     @Column(name = "TRACKED_ITEM_DATE")
     private String date;
+
+    //@Column(name = "ITEM_CATEGORY")
+    //private String category; USER WILL INPUT THE CATEGORY INTO FORM OR I DISPLAY LIST OF COMMON CATEGORIES OF THE ITEM
+
+    //@Columm(name="POINT_OF_SALE")
+    //private String pos; USER WILL INPUT WHERE THEY GOT THE ITEM THEY TRACKED
+
 }

@@ -22,4 +22,12 @@ public class ExpenseServiceImpl implements ExpenseService{
         expenseRepository.delete(expense);
         return "Expense deleted";
     }
+
+    @Override
+    public String updateExpense(Integer expenseID, Expense updatedExpense) {
+        Expense expense = expenseRepository.findById(expenseID).get();
+        expense = updatedExpense;
+        expenseRepository.save(expense);
+        return "Expense updated";
+    }
 }
