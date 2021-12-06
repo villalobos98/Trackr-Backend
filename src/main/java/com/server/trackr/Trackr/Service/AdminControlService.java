@@ -1,9 +1,9 @@
 package com.server.trackr.Trackr.Service;
 
-import com.server.trackr.Trackr.Entities.User;
+import com.server.trackr.Trackr.Entities.UserProfile;
 
 public interface AdminControlService {
-    User findUserByEmail(String email);
-    User findUserByID(Integer userID);
+    UserProfile findUserByEmail(String email);
+    UserProfile findUserByID(Integer userID);
 
 }

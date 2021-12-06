@@ -1,8 +1,8 @@
 package com.server.trackr.Trackr.Service;
 
 import com.server.trackr.Trackr.Entities.Credential;
-import com.server.trackr.Trackr.Entities.User;
-import com.server.trackr.Trackr.Repository.UserRepository;
+import com.server.trackr.Trackr.Entities.UserProfile;
+import com.server.trackr.Trackr.Repository.UserProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 public class UserCredentialServiceImpl implements UserCredentialService {
 
     @Autowired
-    UserRepository repo;
+    UserProfileRepository repo;
 
     @Override
-    public String logoutUser(User user) {
-        Integer userID = user.getUserID();
-        User existingUser = repo.findById(userID).get();
-        existingUser.setStatus(false);
-        repo.save(user);
+    public String logoutUser(UserProfile userProfile) {
+        Integer userID = userProfile.getUserID();
+        UserProfile existingUserProfile = repo.findById(userID).get();
+        existingUserProfile.setStatus(false);
+        repo.save(userProfile);
         return "USER LOGGED OUT";
     }
 
@@ -26,5 +26,9 @@ public class UserCredentialServiceImpl implements UserCredentialService {
         return null;
     }
 
+    @Override
+    public String forgetPassword(String email) {
+        return null;
+    }
 
 }

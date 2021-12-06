@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 
 @Entity
@@ -26,5 +27,8 @@ public class Credential {
 
     @Column(name="PASS_WORD")
     private String password;
+
+    @Column(name = "LOGIN_DATE")
+    private Instant loginDate = Instant.now();
 
 }

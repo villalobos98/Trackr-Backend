@@ -1,7 +1,7 @@
 package com.server.trackr.Trackr.Controllers;
 
 import com.server.trackr.Trackr.Entities.Credential;
-import com.server.trackr.Trackr.Entities.User;
+import com.server.trackr.Trackr.Entities.UserProfile;
 import com.server.trackr.Trackr.Service.UserCredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +21,13 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity<String> logout(@RequestBody User user) {
-        service.saveUser(user);
+    public ResponseEntity<String> logout(@RequestBody UserProfile userProfile) {
+    //        service.saveUser(user);
         return new ResponseEntity<>("User saved", HttpStatus.OK);
     }
 
     @GetMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<String> login(@RequestBody UserProfile userProfile) {
     //        service.findUserAndPassword(user);
         return new ResponseEntity<>("User saved", HttpStatus.OK);
     }

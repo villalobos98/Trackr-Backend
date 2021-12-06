@@ -4,22 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USER_PROFILE")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PROFILE_ID")
+    @Column(name = "USER_ID")
     private Integer userID;
 
     @Column(name="FIRST_NAME")
@@ -28,6 +27,8 @@ public class User {
     @Column(name="LAST_NAME")
     private String lastName;
 
+    @Column(name = "EMAIL")
+    private String email;
 
     @Column(name="GENDER")
     private String gender;
@@ -37,5 +38,4 @@ public class User {
 
     @Column(name = "STATUS", columnDefinition = "boolean default True")
     private Boolean status;
-
 }

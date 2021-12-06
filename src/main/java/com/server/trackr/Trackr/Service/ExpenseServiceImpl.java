@@ -2,10 +2,14 @@ package com.server.trackr.Trackr.Service;
 
 import com.server.trackr.Trackr.Entities.Expense;
 import com.server.trackr.Trackr.Repository.ExpenseRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExpenseServiceImpl implements ExpenseService{
 
     @Autowired
@@ -24,10 +28,8 @@ public class ExpenseServiceImpl implements ExpenseService{
     }
 
     @Override
-    public String updateExpense(Integer expenseID, Expense updatedExpense) {
-        Expense expense = expenseRepository.findById(expenseID).get();
-        expense = updatedExpense;
-        expenseRepository.save(expense);
+    public String updateExpense(Expense updatedExpense) {
+        expenseRepository.save(updatedExpense);
         return "Expense updated";
     }
 }

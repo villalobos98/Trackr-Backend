@@ -1,22 +1,29 @@
 package com.server.trackr.Trackr.Service;
 
-import com.server.trackr.Trackr.Entities.User;
-import com.server.trackr.Trackr.Repository.UserRepository;
+import com.server.trackr.Trackr.Entities.Admin;
+import com.server.trackr.Trackr.Entities.UserProfile;
+import com.server.trackr.Trackr.Repository.AdminRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@NoArgsConstructor
+@AllArgsConstructor
 public class AdminServiceImpl implements AdminControlService{
     @Autowired
-    UserRepository repo;
+    AdminRepository repo;
 
     @Override
-    public User findUserByEmail(String email) {
-        User user = repo.findUserByEmail(email);
-        return user;
+    public UserProfile findUserByEmail(String email) {
+        UserProfile userProfile = repo.findUserByEmail(email);
+        return userProfile;
     }
 
     @Override
-    public User findUserByID(Integer userID) {
-        User user = repo.findById(userID).get();
-        return user;
+    public UserProfile findUserByID(Integer userID) {
+        UserProfile userProfile = repo.findUserByID(userID);
+        return userProfile;
     }
 }

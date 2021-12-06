@@ -7,5 +7,5 @@ public interface ExpenseService {
 
     String deleteExpense(Expense expense);
 
-    String updateExpense(Integer expenseID, Expense updatedExpense);
+    String updateExpense(Expense updatedExpense);
 }

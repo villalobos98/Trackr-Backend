@@ -2,6 +2,8 @@ package com.server.trackr.Trackr.Controllers;
 
 import com.server.trackr.Trackr.Entities.Expense;
 import com.server.trackr.Trackr.Service.ExpenseService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/expense")
 @CrossOrigin(origins = "http://localhost:3000")
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExpenseController {
     @Autowired
     ExpenseService service;
