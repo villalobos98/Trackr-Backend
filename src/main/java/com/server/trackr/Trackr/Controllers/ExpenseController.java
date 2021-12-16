@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/expense")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -37,6 +39,12 @@ public class ExpenseController {
     public ResponseEntity<String> updateExpense(@RequestBody Expense expense) {
     //        service.updateExpense(expense)
         return new ResponseEntity<>("Expense deleted", HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Expense>> getAllExpenses(){
+        List<Expense> allExpenses = service.getAllExpenses();
+        return new ResponseEntity<>(allExpenses, HttpStatus.OK);
     }
 
 }

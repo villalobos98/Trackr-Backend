@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -17,7 +18,7 @@ import javax.persistence.*;
 public class Expense {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "EXPENSE_ID")
     private Integer expenseID;
 
     @Column(name = "TITLE")
@@ -27,7 +28,7 @@ public class Expense {
     private Double amount;
 
     @Column(name = "TRACKED_ITEM_DATE")
-    private String date;
+    private Date date;
 
     //@Column(name = "ITEM_CATEGORY")
     //private String category; USER WILL INPUT THE CATEGORY INTO FORM OR I DISPLAY LIST OF COMMON CATEGORIES OF THE ITEM

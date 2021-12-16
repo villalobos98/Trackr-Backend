@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,4 +34,10 @@ public class ExpenseServiceImpl implements ExpenseService{
         expenseRepository.save(updatedExpense);
         return "Expense updated";
     }
+
+    @Override
+    public List<Expense> getAllExpenses() {
+        return expenseRepository.findAll();
+    }
+
 }
