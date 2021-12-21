@@ -1,3 +1,7 @@
-FROM openjdk:11
-COPY ./target/Trackr-0.0.1-SNAPSHOT.jar Trackr-0.0.1-SNAPSHOT.jar
-CMD ["java","-jar","trackr-0.0.1-SNAPSHOT.jar"]
+FROM maven:3.8.2-jdk-11-openj9
+
+WORKDIR /Trackr-App
+COPY . .
+RUN mvn clean install
+
+CMD mvn spring-boot:run
